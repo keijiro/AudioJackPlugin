@@ -16,7 +16,6 @@
 		0F987B5D18558012000D8549 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F987B5C18558012000D8549 /* CoreAudio.framework */; };
 		0F987B5F18558017000D8549 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F987B5E18558017000D8549 /* Accelerate.framework */; };
 		0F987B611855801C000D8549 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F987B601855801C000D8549 /* AudioUnit.framework */; };
-		0F987B6318558077000D8549 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0F987B6218558077000D8549 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -158,7 +157,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F987B6318558077000D8549 /* README.md in Resources */,
 				0F987B4A18557FF0000D8549 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +302,7 @@
 				0F987B5018557FF0000D8549 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
