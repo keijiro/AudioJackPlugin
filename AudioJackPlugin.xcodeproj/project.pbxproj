@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		0F987B4418557FF0000D8549 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F987B4318557FF0000D8549 /* CoreFoundation.framework */; };
 		0F987B4A18557FF0000D8549 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F987B4818557FF0000D8549 /* InfoPlist.strings */; };
+		0F987B5818558007000D8549 /* AudioInputHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F987B5218558007000D8549 /* AudioInputHandler.m */; };
+		0F987B5918558007000D8549 /* AudioRingBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F987B5418558007000D8549 /* AudioRingBuffer.m */; };
+		0F987B5A18558007000D8549 /* PluginEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F987B5518558007000D8549 /* PluginEntry.m */; };
+		0F987B5B18558007000D8549 /* SpectrumAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F987B5718558007000D8549 /* SpectrumAnalyzer.m */; };
+		0F987B5D18558012000D8549 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F987B5C18558012000D8549 /* CoreAudio.framework */; };
+		0F987B5F18558017000D8549 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F987B5E18558017000D8549 /* Accelerate.framework */; };
+		0F987B611855801C000D8549 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F987B601855801C000D8549 /* AudioUnit.framework */; };
+		0F987B6318558077000D8549 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0F987B6218558077000D8549 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -17,6 +25,17 @@
 		0F987B4718557FF0000D8549 /* AudioJackPlugin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AudioJackPlugin-Info.plist"; sourceTree = "<group>"; };
 		0F987B4918557FF0000D8549 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0F987B4B18557FF0000D8549 /* AudioJackPlugin-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AudioJackPlugin-Prefix.pch"; sourceTree = "<group>"; };
+		0F987B5118558007000D8549 /* AudioInputHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioInputHandler.h; sourceTree = "<group>"; };
+		0F987B5218558007000D8549 /* AudioInputHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioInputHandler.m; sourceTree = "<group>"; };
+		0F987B5318558007000D8549 /* AudioRingBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioRingBuffer.h; sourceTree = "<group>"; };
+		0F987B5418558007000D8549 /* AudioRingBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioRingBuffer.m; sourceTree = "<group>"; };
+		0F987B5518558007000D8549 /* PluginEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PluginEntry.m; sourceTree = "<group>"; };
+		0F987B5618558007000D8549 /* SpectrumAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectrumAnalyzer.h; sourceTree = "<group>"; };
+		0F987B5718558007000D8549 /* SpectrumAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectrumAnalyzer.m; sourceTree = "<group>"; };
+		0F987B5C18558012000D8549 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		0F987B5E18558017000D8549 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		0F987B601855801C000D8549 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		0F987B6218558077000D8549 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -24,6 +43,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F987B611855801C000D8549 /* AudioUnit.framework in Frameworks */,
+				0F987B5F18558017000D8549 /* Accelerate.framework in Frameworks */,
+				0F987B5D18558012000D8549 /* CoreAudio.framework in Frameworks */,
 				0F987B4418557FF0000D8549 /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,6 +73,9 @@
 		0F987B4218557FF0000D8549 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0F987B601855801C000D8549 /* AudioUnit.framework */,
+				0F987B5E18558017000D8549 /* Accelerate.framework */,
+				0F987B5C18558012000D8549 /* CoreAudio.framework */,
 				0F987B4318557FF0000D8549 /* CoreFoundation.framework */,
 			);
 			name = Frameworks;
@@ -59,6 +84,13 @@
 		0F987B4518557FF0000D8549 /* AudioJackPlugin */ = {
 			isa = PBXGroup;
 			children = (
+				0F987B5118558007000D8549 /* AudioInputHandler.h */,
+				0F987B5218558007000D8549 /* AudioInputHandler.m */,
+				0F987B5318558007000D8549 /* AudioRingBuffer.h */,
+				0F987B5418558007000D8549 /* AudioRingBuffer.m */,
+				0F987B5518558007000D8549 /* PluginEntry.m */,
+				0F987B5618558007000D8549 /* SpectrumAnalyzer.h */,
+				0F987B5718558007000D8549 /* SpectrumAnalyzer.m */,
 				0F987B4618557FF0000D8549 /* Supporting Files */,
 			);
 			path = AudioJackPlugin;
@@ -67,6 +99,7 @@
 		0F987B4618557FF0000D8549 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0F987B6218558077000D8549 /* README.md */,
 				0F987B4718557FF0000D8549 /* AudioJackPlugin-Info.plist */,
 				0F987B4818557FF0000D8549 /* InfoPlist.strings */,
 				0F987B4B18557FF0000D8549 /* AudioJackPlugin-Prefix.pch */,
@@ -125,6 +158,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F987B6318558077000D8549 /* README.md in Resources */,
 				0F987B4A18557FF0000D8549 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,6 +170,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F987B5918558007000D8549 /* AudioRingBuffer.m in Sources */,
+				0F987B5A18558007000D8549 /* PluginEntry.m in Sources */,
+				0F987B5B18558007000D8549 /* SpectrumAnalyzer.m in Sources */,
+				0F987B5818558007000D8549 /* AudioInputHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,9 +195,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -194,9 +232,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
