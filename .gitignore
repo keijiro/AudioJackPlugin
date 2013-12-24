@@ -2,3 +2,4 @@ xcuserdata
 xcshareddata
 *.pbxuser
 .DS_Store
+DerivedData/
