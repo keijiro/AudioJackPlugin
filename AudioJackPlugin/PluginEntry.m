@@ -39,6 +39,14 @@ float AudioJackGetChannelLevel(int channel)
     return 20.0f * log10f(rms / kRefLevel + kZeroOffset);
 }
 
+void AudioJackGetRawData(int channel, float *rawData, int samples)
+{
+    AudioInputHandler *input = GetAudioInput();
+
+    // Retrieve a waveform from the specified channel.
+    [[input.ringBuffers objectAtIndex:channel] copyTo:rawData length:samples];
+}
+
 void AudioJackGetSpectrum(int channel, int mode, int pointNumber, float *spectrum)
 {
     AudioInputHandler *input = GetAudioInput();
