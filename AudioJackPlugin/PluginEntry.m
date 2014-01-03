@@ -1,5 +1,5 @@
-// AudioJack plug-in entry point.
-// By Keijiro Takahashi, 2013
+// AudioJack plugin entry point.
+// By Keijiro Takahashi, 2013, 2014
 // https://github.com/keijiro/UnityAudioJack
 
 #import "AudioInputHandler.h"
@@ -10,11 +10,19 @@ static AudioInputHandler *GetAudioInput()
 {
     static bool initialized = false;
     AudioInputHandler *input = [AudioInputHandler sharedInstance];
-    if (!initialized) {
+    if (!initialized)
+    {
         [input start];
         initialized = true;
     }
     return input;
+}
+
+static SpectrumAnalyzer *GetSpectrumAnalyzer()
+{
+    static SpectrumAnalyzer *analyzer = nil;
+    if (!analyzer) analyzer = [[SpectrumAnalyzer alloc] init];
+    return analyzer;
 }
 
 int AudioJackCountChannels()
@@ -42,7 +50,7 @@ float AudioJackGetChannelLevel(int channel)
 void AudioJackGetSpectrum(int channel, int mode, int pointNumber, float *spectrum)
 {
     AudioInputHandler *input = GetAudioInput();
-    SpectrumAnalyzer *analyzer = [SpectrumAnalyzer sharedInstance];
+    SpectrumAnalyzer *analyzer = GetSpectrumAnalyzer();
     
     analyzer.pointNumber = pointNumber;
     
@@ -51,8 +59,8 @@ void AudioJackGetSpectrum(int channel, int mode, int pointNumber, float *spectru
     } else if (mode == 1) {
         [analyzer processAudioInput:input channel1:channel channel2:channel + 1];
     } else {
-        [analyzer processAudioInput:input];
+        [analyzer processAudioInput:input allChannels:YES];
     }
     
-    memcpy(spectrum, analyzer.spectrum, sizeof(float) * pointNumber / 2);
+    memcpy(spectrum, analyzer.rawSpectrumData->data, sizeof(float) * pointNumber / 2);
 }

@@ -1,5 +1,5 @@
-// Realtime FFT spectrum and octave-band analysis.
-// by Keijiro Takahashi, 2013
+// AudioSpectrum: A sample app using Audio Unit and vDSP
+// By Keijiro Takahashi, 2013, 2014
 // https://github.com/keijiro/AudioSpectrum
 
 #import <Foundation/Foundation.h>
@@ -7,44 +7,59 @@
 
 @class AudioInputHandler;
 
+// Octave band type definition.
+typedef NS_ENUM(NSUInteger, OctaveBandType)
+{
+    OctaveBandType4,
+    OctaveBandTypeVisual,
+    OctaveBandType8,
+    OctaveBandTypeStandard,
+    OctaveBandType24,
+    OctaveBandType31
+};
+
+// Data structure for spectrum data.
+struct SpectrumData
+{
+    NSUInteger length;
+    Float32 data[0];
+};
+typedef struct SpectrumData SpectrumData;
+typedef const struct SpectrumData *SpectrumDataRef;
+
+// Spectrum analyzer class interface.
 @interface SpectrumAnalyzer : NSObject
 {
 @private
-    // FFT data point number.
+    // Configurations.
     NSUInteger _pointNumber;
-    NSUInteger _logPointNumber;
+    NSUInteger _octaveBandType;
     
-    // Octave band type.
-    NSUInteger _bandType;
-    
-    // FFT objects.
-    FFTSetup _fftSetup;
-    DSPSplitComplex _fftBuffer;
+    // DFT objects.
+    vDSP_DFT_Setup _dftSetup;
+    DSPSplitComplex _dftBuffer;
     Float32 *_inputBuffer;
     Float32 *_window;
     
     // Spectrum data.
-    Float32 *_spectrum;
-    Float32 *_bandLevels;
+    SpectrumData *_rawSpectrum;
+    SpectrumData *_octaveBandSpectrum;
 }
 
-// Configuration.
+// Configurations.
 @property (nonatomic, assign) NSUInteger pointNumber;
-@property (nonatomic, assign) NSUInteger bandType;
+@property (nonatomic, assign) NSUInteger octaveBandType;
 
 // Spectrum data accessors.
-@property (nonatomic, readonly) const Float32 *spectrum;
-@property (nonatomic, readonly) const Float32 *bandLevels;
-
-// Returns the number of the octave bands.
-- (NSUInteger)countBands;
+@property (nonatomic, readonly) SpectrumDataRef rawSpectrumData;
+@property (nonatomic, readonly) SpectrumDataRef octaveBandSpectrumData;
 
 // Process the audio input.
-- (void)processAudioInput:(AudioInputHandler *)handler;
+- (void)processAudioInput:(AudioInputHandler *)handler allChannels:(BOOL)allChannels;
 - (void)processAudioInput:(AudioInputHandler *)handler channel:(NSUInteger)channel;
 - (void)processAudioInput:(AudioInputHandler *)handler channel1:(NSUInteger)channel1 channel2:(NSUInteger)channel2;
 
-// Retrieve the shared instance.
-+ (SpectrumAnalyzer *)sharedInstance;
+// Process the raw waveform data (the length of the waveform must equal to pointNumber).
+- (void)processWaveform:(const Float32 *)waveform samleRate:(Float32)sampleRate;
 
 @end
